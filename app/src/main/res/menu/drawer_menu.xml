@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+        <item
+            android:id="@+id/home_fragment"
+            android:title="Rate" />
+        <item
+            android:id="@+id/profile_fragment"
+            android:title="About" />
+         <item
+            android:id="@+id/feedback_fragment"
+            android:title="Feedback" />
+
+         <item
+            android:id="@+id/aboutDeveloper"
+            android:title="About Developer" />
+
+
+</menu>

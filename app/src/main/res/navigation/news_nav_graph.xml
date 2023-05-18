@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/news_nav_graph"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.mkrlabs.pmisstudent.fragment.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash"
+        >
+        <action
+            android:id="@+id/action_splashFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.mkrlabs.pmisstudent.fragment.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_homeFragment_to_projectInformationFragment"
+            app:destination="@id/projectInformationFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_projectDetailsFragment"
+            app:destination="@id/projectDetailsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_teacherAddMemberFragment"
+            app:destination="@id/teacherAddMemberFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_chatFragment"
+            app:destination="@id/chatFragment"
+            app:launchSingleTop="false"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.mkrlabs.pmisstudent.fragment.SignUpFragment"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/fragment_sign_up" >
+        <action
+            android:id="@+id/action_signUpFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/signUpFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_signUpFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/signUpFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.mkrlabs.pmisstudent.fragment.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_loginFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/teacherAddMemberFragment"
+        android:name="com.mkrlabs.pmisstudent.fragment.teacher.TeacherAddMemberFragment"
+        android:label="fragment_teacher_add_member"
+        tools:layout="@layout/fragment_teacher_add_member" >
+
+       <argument
+           android:name="project"
+           app:argType="com.mkrlabs.pmisstudent.model.Project"/>
+    </fragment>
+    <fragment
+        android:id="@+id/teacherTaskAddFragment"
+        android:name="com.mkrlabs.pmisstudent.fragment.project_details_tab.TeacherTaskAddFragment"
+        android:label="fragment_teacher_task_add"
+        tools:layout="@layout/fragment_teacher_task_add" />
+    <fragment
+        android:id="@+id/projectDetailsFragment"
+        android:name="com.mkrlabs.pmisstudent.fragment.ProjectDetailsFragment"
+        android:label="fragment_prjecet_details"
+        tools:layout="@layout/fragment_prjecet_details" >
+
+
+        <argument
+            android:name="project"
+            app:argType="com.mkrlabs.pmisstudent.model.Project"/>
+        <action
+            android:id="@+id/action_projectDetailsFragment_to_chatTabFragment"
+            app:destination="@id/chatTabFragment" />
+        <action
+            android:id="@+id/action_projectDetailsFragment_to_overviewTabFragment"
+            app:destination="@id/overviewTabFragment" />
+        <action
+            android:id="@+id/action_projectDetailsFragment_to_teacherTaskAddFragment"
+            app:destination="@id/teacherTaskAddFragment" />
+        <action
+            android:id="@+id/action_projectDetailsFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+
+
+    </fragment>
+    <fragment
+        android:id="@+id/chatTabFragment"
+        android:name="com.mkrlabs.pmisstudent.fragment.project_details_tab.ChatTabFragment"
+        android:label="fragment_chat_tab"
+        tools:layout="@layout/fragment_chat_tab" >
+        <action
+            android:id="@+id/action_chatTabFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.mkrlabs.pmisstudent.fragment.project_details_tab.ChatFragment"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat" >
+
+        <argument
+            android:name="chatItem"
+            app:argType="com.mkrlabs.pmisstudent.model.ChatItem"/>
+
+    </fragment>
+    <fragment
+        android:id="@+id/projectInformationFragment"
+        android:name="com.mkrlabs.pmisstudent.fragment.teacher.ProjectInformationFragment"
+        android:label="fragment_project_information"
+        tools:layout="@layout/fragment_project_information" >
+        <action
+            android:id="@+id/action_projectInformationFragment_to_teacherAddMemberFragment"
+            app:destination="@id/teacherAddMemberFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/overviewTabFragment"
+        android:name="com.mkrlabs.pmisstudent.fragment.project_details_tab.OverviewTabFragment"
+        android:label="fragment_overview_tab"
+        tools:layout="@layout/fragment_overview_tab" />
+</navigation>

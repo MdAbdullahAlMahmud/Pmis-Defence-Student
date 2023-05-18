@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "34129131827",
+    "firebase_url": "https://pmis-defense-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "pmis-defense",
+    "storage_bucket": "pmis-defense.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:34129131827:android:44c31878f5777e9728a646",
+        "android_client_info": {
+          "package_name": "com.mkrlabs.pmisdefence"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "34129131827-u1jdck7lqmsj5p0qr86r8bletvrett9g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIynvKCYQDFFlf-ewxaJPPUW4VSenBuN8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "34129131827-u1jdck7lqmsj5p0qr86r8bletvrett9g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:34129131827:android:d3d13788d168eda728a646",
+        "android_client_info": {
+          "package_name": "com.mkrlabs.pmisstudent"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "34129131827-u1jdck7lqmsj5p0qr86r8bletvrett9g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIynvKCYQDFFlf-ewxaJPPUW4VSenBuN8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "34129131827-u1jdck7lqmsj5p0qr86r8bletvrett9g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
