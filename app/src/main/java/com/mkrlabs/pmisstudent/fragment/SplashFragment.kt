@@ -8,6 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.mkrlabs.pmisstudent.R
+import com.mkrlabs.pmisstudent.util.SharedPref
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import javax.inject.Inject
@@ -16,6 +17,7 @@ import javax.inject.Inject
 class SplashFragment : Fragment() {
 
     @Inject lateinit var  mAuth :FirebaseAuth
+    lateinit var  sharedPref: SharedPref
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -27,12 +29,16 @@ class SplashFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        sharedPref  = SharedPref(view.context)
         lifecycleScope.launchWhenCreated {
             gotToHomeFragment()
         }
     }
 
     private  suspend  fun  gotToHomeFragment(){
+        mAuth.currentUser?.let {
+            sharedPref.setStudenUSER_UID(it.uid)
+        }
         delay(3000)
 
         if(mAuth.currentUser!=null){

@@ -4,6 +4,7 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
+import com.mkrlabs.pmisstudent.api.AppAPI
 import com.mkrlabs.pmisstudent.model.*
 import com.mkrlabs.pmisstudent.util.CommonFunction
 import com.mkrlabs.pmisstudent.util.Constant
@@ -14,8 +15,12 @@ import javax.inject.Inject
 
 class ProjectRepository @Inject constructor(
     val firebaseFirestore: FirebaseFirestore,
-    val mAuth: FirebaseAuth
+    val mAuth: FirebaseAuth,
+    val api: AppAPI
+
 ) {
+    suspend fun sendNotification(headerToken : String ,notificationItem: NotificationItem) = api.postNotification(notificationItem,headerToken)
+
     suspend fun createProject(
         project: Project,
         result: (Resource<Pair<Project, String>>) -> Unit

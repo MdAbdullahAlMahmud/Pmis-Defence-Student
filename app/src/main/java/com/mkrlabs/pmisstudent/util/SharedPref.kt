@@ -9,6 +9,8 @@ class SharedPref(context: Context) {
     private lateinit var sharedPref :SharedPreferences
 
     private val USER_NAME_KEY = "USER_NAME_KEY"
+    private val USER_PROJECT_ID = "USER_PROJECT_ID"
+    private val USER_UID = "USER_UID"
 
     init {
         sharedPref = context.getSharedPreferences("config", Context.MODE_PRIVATE)
@@ -21,6 +23,25 @@ class SharedPref(context: Context) {
     public fun setLoggedInUserName(name:String){
         sharedPref.edit().putString(USER_NAME_KEY,name).apply()
     }
+
+     public fun getStudentProjectId():String{
+        return sharedPref.getString(USER_PROJECT_ID,"Empty").toString()
+    }
+
+    public fun setStudentProjectId(projectId:String){
+        sharedPref.edit().putString(USER_PROJECT_ID,projectId).apply()
+    }
+
+ public fun getUSER_UID():String{
+        return sharedPref.getString(USER_UID,"Empty").toString()
+    }
+
+    public fun setStudenUSER_UID(uid:String){
+        sharedPref.edit().putString(USER_UID,uid).apply()
+    }
+
+
+
 
 
 }

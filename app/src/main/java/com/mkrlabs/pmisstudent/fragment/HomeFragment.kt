@@ -1,6 +1,7 @@
 package com.mkrlabs.pmisstudent.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,6 +37,8 @@ class HomeFragment : Fragment() {
 
     lateinit var onMenuItemClickListener: OnMenuItemClickListener
 
+    lateinit var sharedPref: SharedPref
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -50,6 +53,7 @@ class HomeFragment : Fragment() {
         setupRecycleView()
         projectViewModel = ViewModelProvider(this)[ProjectViewModel::class.java]
         mAuth  = FirebaseAuth.getInstance()
+        sharedPref = SharedPref(view.context)
 
         binding.logoutButton.setOnClickListener {
             mAuth.signOut()
@@ -58,14 +62,23 @@ class HomeFragment : Fragment() {
 
 
 
-        CommonFunction.successToast(view.context,SharedPref(view.context).getLoggedInUserName())
+        CommonFunction.successToast(view.context,SharedPref(view.context).getLoggedInUserName() + " ->  ${sharedPref.getUSER_UID()}")
 
         projectViewModel.fetchProjectList()
         projectViewModel.projectList.observe(viewLifecycleOwner, Observer { response->
             when(response){
                 is Resource.Success->{
                     hideLoading()
-                    response.data?.let { projectAdapter.differ.submitList(it) }
+                    response.data?.let {
+                        projectAdapter.differ.submitList(it)
+
+                        if (it.size>0){
+                            Log.v("Project", "Student Project Size -> ${it.size}" )
+                            var projectId  = it.get(0).projectUID
+                            sharedPref.setStudentProjectId(projectId)
+                        }
+                    }
+
                 }
                 is Resource.Loading->{
                     showLoading()
