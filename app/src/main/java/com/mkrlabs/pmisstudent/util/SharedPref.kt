@@ -11,6 +11,7 @@ class SharedPref(context: Context) {
     private val USER_NAME_KEY = "USER_NAME_KEY"
     private val USER_PROJECT_ID = "USER_PROJECT_ID"
     private val USER_UID = "USER_UID"
+    private val IS_SUBSCRIBED_ON_TOPIC = "IS_SUBSCRIBED_ON_TOPIC"
 
     init {
         sharedPref = context.getSharedPreferences("config", Context.MODE_PRIVATE)
@@ -32,13 +33,27 @@ class SharedPref(context: Context) {
         sharedPref.edit().putString(USER_PROJECT_ID,projectId).apply()
     }
 
- public fun getUSER_UID():String{
+    public fun getUSER_UID():String{
         return sharedPref.getString(USER_UID,"Empty").toString()
     }
 
     public fun setStudenUSER_UID(uid:String){
         sharedPref.edit().putString(USER_UID,uid).apply()
     }
+
+
+     public fun getSubscribedStatus():Boolean{
+        return sharedPref.getBoolean(IS_SUBSCRIBED_ON_TOPIC,false)
+    }
+
+    public fun setSubscribedStatus(status : Boolean){
+        sharedPref.edit().putBoolean(IS_SUBSCRIBED_ON_TOPIC,status).apply()
+    }
+
+
+
+
+
 
 
 

@@ -29,6 +29,7 @@ import com.mkrlabs.pmisstudent.R
 import com.mkrlabs.pmisstudent.databinding.ActivityHomeBinding
 import com.mkrlabs.pmisstudent.fragment.HomeFragment
 import com.mkrlabs.pmisstudent.util.Constant
+import com.mkrlabs.pmisstudent.util.SharedPref
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -40,12 +41,14 @@ class HomeActivity : AppCompatActivity() {
 
     lateinit var  firebase : FirebaseFirestore
     lateinit var  mAuth: FirebaseAuth
+    lateinit var  sharedPref: SharedPref
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activityHomeBinding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(activityHomeBinding.root)
+        sharedPref = SharedPref(this)
         firebase = FirebaseFirestore.getInstance()
         mAuth = FirebaseAuth.getInstance()
         navController = findNavController(R.id.newsNavHostFragment)
@@ -68,7 +71,7 @@ class HomeActivity : AppCompatActivity() {
         }
 
 
-        saveCurrentUserToken()
+
 
     }
 
@@ -77,55 +80,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
 
-    private fun saveCurrentUserToken(){
-        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
-            if (!task.isSuccessful) {
-                Log.w("FirebaseToken", "Fetching FCM registration token failed", task.exception)
-                return@OnCompleteListener
-            }
 
-            // Get new FCM registration token
-            val token = task.result
-
-            Log.d("FirebaseToken", token)
-            uploadTokenToFirebase(token)
-
-        })
-
-        Firebase.messaging.subscribeToTopic("group_task")
-            .addOnCompleteListener { task ->
-                var msg = "Subscribed"
-                if (!task.isSuccessful) {
-                    msg = "Subscribe failed"
-                }
-                Log.d("FirebaseToken", msg)
-                Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
-            }
-
-
-    }
-
-    private fun  uploadTokenToFirebase(token:String){
-
-        val map = HashMap<String,String>()
-
-        map.put("deviceToken",token)
-        mAuth.currentUser?.apply {
-            firebase.collection(Constant.USER_NODE)
-                .document(uid)
-                .set(map, SetOptions.merge())
-                .addOnSuccessListener {
-                    Log.v("FirebaseToken", token)
-
-                }.addOnFailureListener {
-                    Log.v("FirebaseToken", "Failed to generate Firebase Token")
-                }
-        }
-
-
-
-
-    }
 
     private val notificationPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
