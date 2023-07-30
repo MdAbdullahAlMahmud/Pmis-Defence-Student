@@ -47,6 +47,9 @@
             app:launchSingleTop="false"
             app:popUpTo="@id/homeFragment"
             app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_homeFragment_to_informationFragment"
+            app:destination="@id/informationFragment" />
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
@@ -154,4 +157,9 @@
         android:name="com.mkrlabs.pmisstudent.fragment.project_details_tab.OverviewTabFragment"
         android:label="fragment_overview_tab"
         tools:layout="@layout/fragment_overview_tab" />
+    <fragment
+        android:id="@+id/informationFragment"
+        android:name="com.mkrlabs.pmisstudent.fragment.InformationFragment"
+        android:label="fragment_information"
+        tools:layout="@layout/fragment_information" />
 </navigation>

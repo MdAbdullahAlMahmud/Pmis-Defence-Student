@@ -35,7 +35,9 @@
         android:layout_gravity="start"
         android:background="@color/white"
         >
-        <include layout="@layout/nav_design" />
+        <include
+            android:id="@+id/navigationDrawerItem"
+            layout="@layout/nav_design" />
 
     </com.google.android.material.navigation.NavigationView>
 

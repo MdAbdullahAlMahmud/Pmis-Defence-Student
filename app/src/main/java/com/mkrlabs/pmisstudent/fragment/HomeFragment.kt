@@ -72,7 +72,6 @@ class HomeFragment : Fragment() {
 
 
 
-        CommonFunction.successToast(view.context,SharedPref(view.context).getLoggedInUserName() + " ->  ${sharedPref.getUSER_UID()}")
 
         projectViewModel.fetchProjectList()
         projectViewModel.projectList.observe(viewLifecycleOwner, Observer { response->
@@ -100,7 +99,7 @@ class HomeFragment : Fragment() {
                 }
                 is Resource.Error->{
                     hideLoading()
-                    CommonFunction.successToast(view.context,response.message.toString())
+                    CommonFunction.errorToast(view.context,response.message.toString())
                 }
             }
         })

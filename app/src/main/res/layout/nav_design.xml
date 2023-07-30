@@ -59,7 +59,7 @@
                 >
 
                 <TextView
-                    android:id="@+id/navProfileTV"
+                    android:id="@+id/navDeveloperTV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
@@ -141,36 +141,6 @@
                 android:visibility="visible" />
 
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:focusable="true"
-                android:background="?android:attr/selectableItemBackground"
-                >
-
-                <TextView
-                    android:id="@+id/navAboutTv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:clickable="true"
-                    android:drawablePadding="20dp"
-                    android:drawableTint="@color/grey_800"
-                    android:foreground="?selectableItemBackground"
-                    android:gravity="start|center"
-                    android:paddingLeft="20dp"
-                    android:paddingTop="15dp"
-                    android:paddingRight="5dp"
-                    android:paddingBottom="15dp"
-                    android:text="@string/nav_about"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:drawableLeftCompat="@drawable/ic_info_outline_white_24dp"
-                    />
-            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <View
                 android:layout_width="match_parent"
